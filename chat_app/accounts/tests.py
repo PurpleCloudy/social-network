@@ -56,8 +56,9 @@ class ProfileTest(TestCase):
         try:
             from .forms import RegisterForm
             _form = True
-        except:
+        except Exception as e:
             _form = False
+            print(e, "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF")
         self.assertTrue(_form, msg='Ошибка импортирования формы, используйте имя - RegisterForm')
         print('Тестирование модуля accounts - Проверка импортирования формы для "Регистрации" [x]')
         from django.forms import CharField, EmailField

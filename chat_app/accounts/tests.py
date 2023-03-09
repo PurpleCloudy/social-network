@@ -80,6 +80,7 @@ class ProfileTest(TestCase):
             self.client.get(reverse('registration'))
         except NoReverseMatch:
             rev = True
+        print()
         self.assertTrue(not rev, msg='Ошибка в параметре name для registration в urls.py, правильные значения: name="registration"')
         print('Тестирование модуля accounts - Проверка urls.py для регистрации [x]')
         print('Тестирование модуля accounts - Создание пользователя [ ]')

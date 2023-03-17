@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    {% if user.is_is_authenticated %}
+        <div class="login">
+            <a href="login/"> login </a>
+            <a href="logout/"> logout </a>
+            <a href="profile/">profile</a>
+        </div>
+    {% else %}
+        <div class="register">
+            <a href="registration/">registration</a>
+        </div>
+{% endblock %}

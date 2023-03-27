@@ -9,7 +9,7 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
-def registration_view(request, *args, **kwargs):
+def registration_view(request):
     if request.method == 'POST':
         form = RegisterForm(request.POST or None)
         if form.is_valid():
@@ -24,7 +24,7 @@ def registration_view(request, *args, **kwargs):
         form = RegisterForm()
     return render(request, 'accounts/registration_form.html', {'form':form})
 
-def login_view(request, *args, **kwargs):
+def login_view(request):
     if request.method == 'POST':
         form = LoginForm(request.POST or None)
         if form.is_valid():

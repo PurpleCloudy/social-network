@@ -6,6 +6,7 @@ from .forms import RegisterForm, LoginForm
 from .models import UserProfile
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
+from chat.models import ChatModel
 
 # Create your views here.
 
@@ -33,9 +34,9 @@ def login_view(request):
             user = authenticate(request, username=user_name, password=password)
             if user:
                 login(request, user)
-                return redirect("/")
+                return redirect(reverse('index'))
             else:
-                return redirect("login/")
+                return redirect(reverse('login'))
     else:
         form = LoginForm()  
     return render(request, 'accounts/login_form.html', {'form':form, 'login':True})
@@ -47,6 +48,7 @@ def logout_view(request):
 @login_required(login_url="/login/")
 def profile_view(request):
     user = request.user
-    return render(request, 'accounts/profile.html', {'profile':user})
+    counter = ChatModel.objects.filter(user=user)
+    return render(request, 'accounts/profile.html', {'profile':user, 'counter':counter})
     
 

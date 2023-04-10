@@ -1,6 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    {% for message in messages %}
+        <p>
+            <mark>{{message.user.username}}</mark> 
+            {{message.text}}
+        </p>
+    {% endfor %}
     <form action="/send/" method="post">
         {% csrf_token %}
 

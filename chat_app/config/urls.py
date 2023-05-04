@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from accounts.views import registration_view, login_view, logout_view, profile_view
 from chat.views import index_view, send_view
+from subscribers.views import subscribing_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,5 +26,6 @@ urlpatterns = [
     path('logout/', logout_view, name='logout'),
     path('profile/', profile_view, name='profile'),
     path('', index_view, name='index'),
-    path('send/', send_view, name="send-message")
+    path('send/', send_view, name="send-message"),
+    path('subscribe/int', subscribing_view, name = 'subscribe')
 ]

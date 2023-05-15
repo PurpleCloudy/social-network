@@ -7,6 +7,7 @@ from .models import UserProfile
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from chat.models import ChatModel
+from subscribers.models import SubscribeModel
 
 # Create your views here.
 
@@ -49,6 +50,7 @@ def logout_view(request):
 def profile_view(request):
     user = request.user
     counter = ChatModel.objects.filter(user=user)
-    return render(request, 'accounts/profile.html', {'profile':user, 'counter':counter})
+    subs = SubscribeModel.objects.filter(self_user=user)
+    return render(request, 'accounts/profile.html', {'profile':user, 'counter':counter, 'subs':subs})
     
 

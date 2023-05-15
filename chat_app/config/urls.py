@@ -27,5 +27,5 @@ urlpatterns = [
     path('profile/', profile_view, name='profile'),
     path('', index_view, name='index'),
     path('send/', send_view, name="send-message"),
-    path('subscribe/int', subscribing_view, name = 'subscribe')
+    path('subscribe/<int:pk>/', subscribing_view, name = 'subscribe'),
 ]
